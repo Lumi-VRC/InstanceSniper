@@ -3,6 +3,6 @@
     "port": "3306",
     "user": "Username",
     "password": "Password",
-    "database": "databaseName"
+    "database": "instanceSniperDB"
   }
   
