@@ -2,6 +2,8 @@
 By "lumi_vrc" on Discord, "- Lumine -" in game.
 This bot will automatically close VRChat instances "illegally" opened via exploits.
 
+## Available and enabled by default for any group set up on https://fch-toolkit.com
+
 Install dependencies with npm install.
 
 Then, simply run instanceSniper.js with pm2 or as a standalone process in a terminal, coupled with a group id to insert it in the database.
