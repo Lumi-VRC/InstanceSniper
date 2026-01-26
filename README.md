@@ -7,8 +7,8 @@ Install dependencies with npm install.
 Then, simply run instanceSniper.js with pm2 or as a standalone process in a terminal, coupled with a group id to insert it in the database.
 
 Bot account must be in group with "View Audit Log", "View All Members", and "Manage Group Instances" permissions.
-Usage:
-node instancesniper.js grp_xxx
+
+Usage: node instancesniper.js grp_xxx
 
 
 /config/db.json
