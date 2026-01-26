@@ -3,7 +3,9 @@ By "lumi_vrc" on Discord, "- Lumine -" in game.
 This bot will automatically close VRChat instances "illegally" opened via exploits.
 
 Install dependencies with npm install.
-Simply run instanceSniper.js with pm2 or as a standalone process in a terminal, coupled with a group id to insert it in the database.
+
+Then, simply run instanceSniper.js with pm2 or as a standalone process in a terminal, coupled with a group id to insert it in the database.
+
 Bot account must be in group with "View Audit Log", "View All Members", and "Manage Group Instances" permissions.
 Usage:
 node instancesniper.js grp_xxx
