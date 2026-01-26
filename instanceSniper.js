@@ -12,7 +12,7 @@ const chalk = require("chalk"); // Pretty colored console :3
 // Credentials.json stores our VRChat login as "config".
 // Note: Use email instead of username. More stable.
 // Username must be your original username; if you've name swapped, it doesn't change your login username.
-const configPath = path.join(__dirname, "/config/credentials.json");
+const configPath = path.join(__dirname, "./config/credentials.json");
 let config;
 try {
     config = require(configPath);
@@ -23,7 +23,7 @@ try {
 
 // mySQL Database login credentials, stored as "dbCfg", from "db.json".
 const dbCfg = (() => {
-    try { return require("/config/db.json"); } catch (e) { return {}; }
+    try { return require("./config/db.json"); } catch (e) { return {}; }
 })();
 
 const DB_HOST = dbCfg.host;
