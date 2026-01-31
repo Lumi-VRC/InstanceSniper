@@ -47,6 +47,7 @@ otpauth://totp/VRChat:email@email.com?secret=YOURCODEISHERE&issuer=VRChat
 
 Note:
 You may also use environmental variables, for those more technically inclined.
+
 VRCHAT_EMAIL
 VRCHAT_PASS
 VRCHAT_TWOFA
