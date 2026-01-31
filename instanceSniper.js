@@ -12,25 +12,45 @@ const chalk = require("chalk"); // Pretty colored console :3
 // Credentials.json stores our VRChat login as "config".
 // Note: Use email instead of username. More stable.
 // Username must be your original username; if you've name swapped, it doesn't change your login username.
+// Environment variables take priority: VRCHAT_EMAIL, VRCHAT_PASS, VRCHAT_TWOFA
 const configPath = path.join(__dirname, "./config/credentials.json");
 let config;
 try {
     config = require(configPath);
 } catch (err) {
-    console.error(chalk.red.bold(`Missing VRChat config at ${configPath}. Please place credentials.json there.`));
+    config = {};
+}
+
+// Prioritize environment variables over JSON config
+const configEmail = process.env.VRCHAT_EMAIL || config.VRChat?.email;
+const configPass = process.env.VRCHAT_PASS || config.VRChat?.pass;
+const configTwofa = process.env.VRCHAT_TWOFA || config.VRChat?.twofa;
+
+if (!configEmail || !configPass || !configTwofa) {
+    console.error(chalk.red.bold(`Missing VRChat credentials. Set VRCHAT_EMAIL, VRCHAT_PASS, VRCHAT_TWOFA environment variables or provide credentials.json at ${configPath}.`));
     process.exit(1);
 }
 
+// Create config object with environment variables or JSON fallback
+config = {
+    VRChat: {
+        email: configEmail,
+        pass: configPass,
+        twofa: configTwofa
+    }
+};
+
 // mySQL Database login credentials, stored as "dbCfg", from "db.json".
+// Environment variables take priority: VRCDB_HOST, VRCDB_PORT, VRCDB_USER, VRCDB_PASSWORD, VRCDB_DATABASE
 const dbCfg = (() => {
     try { return require("./config/db.json"); } catch (e) { return {}; }
 })();
 
-const DB_HOST = dbCfg.host;
-const DB_PORT = Number(dbCfg.port);
-const DB_USER = dbCfg.user;
-const DB_PASSWORD = dbCfg.password;
-const DB_NAME = dbCfg.database;
+const DB_HOST = process.env.VRCDB_HOST || dbCfg.host;
+const DB_PORT = Number(process.env.VRCDB_PORT || dbCfg.port);
+const DB_USER = process.env.VRCDB_USER || dbCfg.user;
+const DB_PASSWORD = process.env.VRCDB_PASSWORD || dbCfg.password;
+const DB_NAME = process.env.VRCDB_DATABASE || dbCfg.database;
 
 // Rate limiting
 // Generally, a given account can sustain 1 call per second, but slowing it down offers better stability.
