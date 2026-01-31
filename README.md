@@ -43,3 +43,16 @@ Obtain your 2fa auth seed by following these instructions:
 4. Manually inspect link for "YOURCODEISHERE":
 otpauth://totp/VRChat:email@email.com?secret=YOURCODEISHERE&issuer=VRChat
 5. Save that in "twofa", then follow the link and complete 2FA setup normally.
+
+
+Note:
+You may also use environmental variables, for those more technically inclined.
+VRCHAT_EMAIL
+VRCHAT_PASS
+VRCHAT_TWOFA
+
+VRCDB_HOST
+VRCDB_PORT
+VRCDB_USER
+VRCDB_PASSWORD
+VRCDB_DATABASE
